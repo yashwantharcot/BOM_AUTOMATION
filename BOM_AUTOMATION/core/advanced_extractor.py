@@ -77,7 +77,7 @@ class VectorTextExtractor:
 class OCRTextExtractor:
     """Extract text via OCR with coordinates and confidence"""
     
-    def __init__(self, doc, page_num, zoom=2.5):
+    def __init__(self, doc, page_num, zoom=8.33):
         self.doc = doc
         self.page = doc[page_num]
         self.page_num = page_num
@@ -91,21 +91,13 @@ class OCRTextExtractor:
             # Rasterize page to high-res image
             mat = fitz.Matrix(self.zoom, self.zoom)
             pix = self.page.get_pixmap(matrix=mat, alpha=False)
-            
-            # Convert to PIL Image
-            img_data = pix.tobytes("ppm")
-            img = Image.open(Path("/tmp/temp.ppm") if False else None)
-            
-            # Direct conversion
-            mode = "RGB" if pix.n < 4 else "RGBA"
+            # Direct conversion to cv2 image (no temp file)
             img_array = np.frombuffer(pix.samples, dtype=np.uint8)
             img_array = img_array.reshape(pix.height, pix.width, pix.n)
-            
             if pix.n == 4:
                 img_array = cv2.cvtColor(img_array, cv2.COLOR_RGBA2BGR)
             else:
                 img_array = cv2.cvtColor(img_array, cv2.COLOR_RGB2BGR)
-            
             self.cv_image = img_array
             
             # Run Tesseract with detailed output
@@ -217,6 +209,85 @@ class SymbolDetector:
         self.detect_balloons()
         self.detect_rectangles()
         return self.symbols
+
+
+class SymbolPatchExtractor:
+    """Extract symbol-like patches from a page image (no prior templates)"""
+
+    def __init__(self, cv_image, text_boxes=None, out_dir=Path("outputs/symbol_patches")):
+        self.cv_image = cv_image
+        self.text_boxes = text_boxes or []
+        self.out_dir = Path(out_dir)
+        self.out_dir.mkdir(parents=True, exist_ok=True)
+
+    def remove_text_regions(self, mask):
+        """Mask out known text regions to avoid extracting them as symbols"""
+        for bbox in self.text_boxes:
+            try:
+                x0, y0, x1, y1 = map(int, bbox)
+                cv2.rectangle(mask, (x0, y0), (x1, y1), 255, thickness=-1)
+            except Exception:
+                continue
+        return mask
+
+    def extract(self, page_num=0, min_area=1, max_area=1_000_000, min_ar=0.05, max_ar=20.0, save_debug=True):
+        if self.cv_image is None:
+            return []
+
+        gray = cv2.cvtColor(self.cv_image, cv2.COLOR_BGR2GRAY)
+        # Enhance contrast and binarize adaptively for thin CAD strokes
+        clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8, 8))
+        gray_eq = clahe.apply(gray)
+        binary = cv2.adaptiveThreshold(
+            gray_eq, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 31, 5
+        )
+        inv = 255 - binary
+        # Remove known text regions
+        inv = self.remove_text_regions(inv)
+        # Merge broken strokes and clean specks (aggressive)
+        kernel_close = cv2.getStructuringElement(cv2.MORPH_RECT, (7, 7))
+        inv = cv2.morphologyEx(inv, cv2.MORPH_CLOSE, kernel_close, iterations=2)
+        kernel_open = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
+        inv = cv2.morphologyEx(inv, cv2.MORPH_OPEN, kernel_open, iterations=1)
+
+        if save_debug:
+            debug_path = self.out_dir / f"page_{page_num+1}_debug.png"
+            try:
+                cv2.imwrite(str(debug_path), inv)
+            except Exception:
+                pass
+
+        contours, _ = cv2.findContours(inv, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        patches = []
+        h_img, w_img = inv.shape
+
+        for idx, cnt in enumerate(contours):
+            area = cv2.contourArea(cnt)
+            if area < min_area or area > max_area:
+                continue
+            x, y, w, h = cv2.boundingRect(cnt)
+            aspect = w / float(h + 1e-6)
+            if aspect < min_ar or aspect > max_ar:
+                continue
+
+            x0, y0 = max(x - 2, 0), max(y - 2, 0)
+            x1, y1 = min(x + w + 2, w_img), min(y + h + 2, h_img)
+            patch = self.cv_image[y0:y1, x0:x1]
+            filename = f"page_{page_num+1}_symbol_{len(patches)}.png"
+            out_path = self.out_dir / filename
+            try:
+                cv2.imwrite(str(out_path), patch)
+            except Exception:
+                continue
+
+            patches.append({
+                "file": str(out_path),
+                "bbox": [int(x0), int(y0), int(x1), int(y1)],
+                "area": float(area),
+                "aspect_ratio": float(aspect)
+            })
+
+        return patches
 
 
 class ValueExtractor:
@@ -377,6 +448,7 @@ class CADExtractor:
             'vector_text': [],
             'ocr_text': [],
             'symbols': [],
+            'symbol_patches': [],
             'associations': [],
             'tables': [],
             'parsed_items': [],
@@ -399,30 +471,56 @@ class CADExtractor:
         page_data['ocr_text'] = ocr_texts
         print("       Found {} OCR texts".format(len(ocr_texts)))
         
-        # 3. Symbol detection
-        print("  [3/6] Symbol detection...")
+        # 3. Vector symbol extraction (Option 2 - most accurate for CAD)
+        print("  [3/8] Vector symbol extraction...")
+        try:
+            from core.vector_symbol_extractor import VectorSymbolExtractor
+            vec_extractor = VectorSymbolExtractor(self.pdf_path)
+            vec_result = vec_extractor.extract_symbols_from_page(page_num)
+            page_data['vector_symbols'] = vec_result['symbols']
+            page_data['vector_symbol_groups'] = vec_result['groups']
+            page_data['vector_symbol_count'] = vec_result['total_symbols']
+            vec_extractor.close()
+            print("       Found {} vector symbols ({} unique patterns)".format(
+                vec_result['total_symbols'], vec_result['unique_patterns']))
+        except Exception as e:
+            print("       Vector extraction failed: {}".format(e))
+            page_data['vector_symbols'] = []
+            page_data['vector_symbol_groups'] = {}
+            page_data['vector_symbol_count'] = 0
+        
+        # 4. Symbol patch extraction (template-free raster method)
+        print("  [4/8] Symbol patch extraction (raster)...")
+        text_boxes = [t['bbox'] for t in (vector_texts + ocr_texts)]
+        patch_extractor = SymbolPatchExtractor(cv_image, text_boxes=text_boxes)
+        symbol_patches = patch_extractor.extract(page_num=page_num)
+        page_data['symbol_patches'] = symbol_patches
+        print("       Saved {} symbol patches".format(len(symbol_patches)))
+        
+        # 5. Symbol detection (heuristic)
+        print("  [5/8] Symbol detection (heuristic)...")
         if cv_image is not None:
             symbol_detector = SymbolDetector(cv_image)
             symbols = symbol_detector.detect_all()
             page_data['symbols'] = symbols
             print("       Found {} symbols".format(len(symbols)))
         
-        # 4. Associations
-        print("  [4/6] Symbol-to-text association...")
+        # 6. Associations
+        print("  [6/8] Symbol-to-text association...")
         all_texts = vector_texts + ocr_texts
         associations = AssociationEngine.associate_all(page_data['symbols'], all_texts)
         page_data['associations'] = associations
         print("       Created {} associations".format(len(associations)))
         
-        # 5. Table extraction
-        print("  [5/6] Table detection...")
+        # 7. Table extraction
+        print("  [7/8] Table detection...")
         table_extractor = TableExtractor(self.doc, page_num)
         tables = table_extractor.extract()
         page_data['tables'] = tables
         print("       Found {} table indicators".format(len(tables)))
         
-        # 6. Value extraction and parsing
-        print("  [6/6] Value extraction...")
+        # 8. Value extraction and parsing
+        print("  [8/8] Value extraction...")
         parsed_items = []
         combined_text = '\n'.join([t['text'] for t in all_texts])
         
@@ -462,7 +560,9 @@ class CADExtractor:
         page_data['statistics'] = {
             'total_vector_text': len(vector_texts),
             'total_ocr_text': len(ocr_texts),
+            'total_symbol_patches': len(symbol_patches),
             'total_symbols': len(page_data['symbols']),
+            'total_vector_symbols': page_data.get('vector_symbol_count', 0),
             'total_associations': len(associations),
             'high_confidence_items': sum(1 for i in parsed_items if i['final_confidence'] > 0.9),
             'medium_confidence_items': sum(1 for i in parsed_items if 0.7 < i['final_confidence'] <= 0.9),

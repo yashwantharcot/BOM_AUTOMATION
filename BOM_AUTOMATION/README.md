@@ -225,3 +225,4 @@ When adding new features:
 
 
 
+.\bom\Scripts\python.exe -m streamlit run streamlit_symbol_extraction.py

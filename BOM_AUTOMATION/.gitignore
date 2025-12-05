@@ -1,0 +1,71 @@
+# -------------------------
+# Python
+# -------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Byte-compiled / optimized / DLL files
+*.pyd
+*.pyo
+*.pdb
+
+# Virtual environments
+venv/
+env/
+.venv/
+.bom/          # if your env is named bom
+.bm/
+*.env
+bom
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+pytest_cache/
+nosetests.xml
+coverage.xml
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# MyPy
+.mypy_cache/
+dmypy.json
+dmypy.log
+
+# PyCharm / VSCode
+.idea/
+.vscode/
+*.code-workspace
+
+# Local configs
+*.env
+*.local
+.env.*
+.DS_Store
+
+# Logs
+*.log
+
+# Generated outputs
+outputs/
+results/
+tmp/
+temp/
