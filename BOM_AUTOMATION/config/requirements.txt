@@ -1,0 +1,46 @@
+# Core Dependencies
+fastapi
+uvicorn
+python-multipart
+pymupdf
+pillow
+pytesseract
+opencv-python-headless
+numpy
+pymongo
+pytest
+
+# PDF Processing
+pdfplumber
+pdfminer.six
+ezdxf
+
+# Computer Vision & ML
+opencv-python
+scikit-image
+ultralytics  # YOLOv8
+torch  # PyTorch for ML models
+torchvision
+
+# Feature Matching
+opencv-contrib-python  # For SIFT, AKAZE
+
+# NLP & Text Processing
+spacy
+python-dotenv
+
+# Database
+psycopg2-binary  # PostgreSQL
+asyncpg  # Async PostgreSQL
+sqlalchemy
+
+# Data Processing
+pandas
+openpyxl  # Excel export
+
+# Storage (optional)
+boto3  # AWS S3
+minio  # MinIO S3-compatible
+
+# Utilities
+python-dateutil

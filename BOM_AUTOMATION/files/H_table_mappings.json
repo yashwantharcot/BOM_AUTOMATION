@@ -1,0 +1,30 @@
+{
+  "table_page1_0": {
+    "page": 1,
+    "table_index": 0,
+    "raw_rows": 7,
+    "raw_columns": 6,
+    "key_value_pairs": {},
+    "header_data": {
+      "date": "2008-01-13"
+    }
+  },
+  "table_page1_1": {
+    "page": 1,
+    "table_index": 1,
+    "raw_rows": 3,
+    "raw_columns": 1,
+    "key_value_pairs": {},
+    "header_data": {}
+  },
+  "table_page1_2": {
+    "page": 1,
+    "table_index": 2,
+    "raw_rows": 2,
+    "raw_columns": 1,
+    "key_value_pairs": {},
+    "header_data": {
+      "date": "2008-01-13"
+    }
+  }
+}

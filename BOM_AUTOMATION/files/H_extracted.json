@@ -1,0 +1,60 @@
+{
+  "source_file": "H.pdf",
+  "extraction_date": "2025-12-04T15:45:12.605154",
+  "raw_text": "1 2 3 4 5 6 7 8\nA\n600\n317\n305\n282\nB 267\n137\n100\n0\nC\nD\nE\nF\nMetric\nDimensions shown in mm vestas.com unless otherwise specified\n056\n12x 65 1\n2x 115 1\n0\n1\n1-\n0 1 1-\n60\n52\n372\n20\n0 981 062 133 104 274 516 627 658 2612 9023\n400\n45(cid:1)$(cid:2)\n45(cid:1)$(cid:2)\n20\n2182\n397\n100\n001\n769\n3182 1\n17 1\n10 1 11 1\nForm acc. to DXF\nForm acc. to DXF\nD\nA\nC B\nB A C\nForm acc. to DXF\nMaterial and thickness acc. to Table 01\nTo be produced acc. to current revision of Technical Purchase Speci9f0i1c5a2t9ion\nTolerances acc. to basic material standard are accepted\nAll kinds of cutting dimensions without tolerances acc. to ISO 901333:22002 -\nB C Dimensions without tolerancaecsc . to ISO 2768:1989 L-c\n1:2 1:2 -1\nUnspecified edges acc. to ISO 13715:200-03\nA\nALL VISIBLE SIGNS OF EDGE DISCONTINUITIES\n1:2\nTO BE REMOVED. -1\nTHE CUT AREAS ARE TO BE MACHINED OR GROUND Unspecified hole edges acc. to ISO 13715:200-03\nAN ALL BURRS TO BE REMOVED.\nBasic material:\nPlate EN 10029:1991/AC:1991\n1:20\nItem no. Mass (kg) Certificate Format Status Revised by Created date Created by\n762849 195 EN 10204:2004-3.1 A3 KAJAY 2008-01-13 kebon\nMaterial / Specification Scale Change no. PDM ver. Reviewed date Reviewed by\nEN 10025:2004 -S 355J2+N + Option 5\n1:10 387909 7.5\n-\nProj. Item description\nD\n1:10 Table_Version=1 REAR FOUNDATION, TOP PLATE\n-\nPro/E\nTable 01\nReplaces / Copy of Drawing no. Ver. Sheet\n- 762849 7 1of1 CATEGORY t MATERIAL\nWARNING: PROPRIETARY AND CONFIDENTIAL INFORMATION.\nEU (20) EN 10025:2004-S355J2 + N + Option 5 + EN 10164 Z25This document and the Information set forth herein are confidentpiraolp rainedt ary to Vestas Wind Systems A/S. It contains trade secretsi,n daenpde ndent economic value, actual\nor potential, may be derived from the document/Information not being geknneorwanl.l yI n consideration of you receiving this document you agree (I) tthoe kIenefpo rmation secret\n(II) only to use the Information for the purpose specifically agrVeeesdt awsi t(hI II) not to disclose directly or indirectly any part of the Itnof oarnmya ttihoinr d party and\nUS/BRAZIL (19) ASTM A572 GR.50+NORMALIZATION+ ASTM A770 ZT (IV) not to make copies or reproductions thereof by whatsoever meuanndse rotra ke any qualitative or quantitative analysis, reverse enginereerpilnigc aotri on.\nVESTAS PROPRIETARY NOTICE: This document contains valuable confidential information of Vestas Wind Systems A/S. It is protected by copyright law as an unpublished work. Vestas reserves all patent, copyright, trade secret, and\nother proprietary rights to it. The information in this document may not be used, reproduced, or disclosed except if and to the extent rights are expressly granted by Vestas in writing and subject to applicable conditions. Vestas\ndisclaims all warranties except as expressly granted by written agreement and is not responsible for unauthorized uses, for which it may pursue legal remedies against responsible parties.",
+  "structured_data": {
+    "materials": [
+      "and thickness acc. to Table 01",
+      "standard are accepted",
+      "Specification",
+      "10029:1991",
+      "10204:2004-3.1",
+      "10025:2004",
+      "10025:2004-S355J2",
+      "10164"
+    ],
+    "description": "Item description",
+    "dates_found": [
+      "2008-01-13"
+    ],
+    "text_lines": [
+      "Dimensions shown in mm vestas.com unless otherwise specified",
+      "12x 65 1",
+      "2x 115 1",
+      "45(cid:1)$(cid:2)",
+      "45(cid:1)$(cid:2)",
+      "Form acc. to DXF",
+      "Form acc. to DXF",
+      "Form acc. to DXF",
+      "Material and thickness acc. to Table 01",
+      "To be produced acc. to current revision of Technical Purchase Speci9f0i1c5a2t9ion",
+      "Tolerances acc. to basic material standard are accepted",
+      "All kinds of cutting dimensions without tolerances acc. to ISO 901333:22002 -",
+      "B C Dimensions without tolerancaecsc . to ISO 2768:1989 L-c",
+      "Unspecified edges acc. to ISO 13715:200-03",
+      "ALL VISIBLE SIGNS OF EDGE DISCONTINUITIES",
+      "TO BE REMOVED. -1",
+      "THE CUT AREAS ARE TO BE MACHINED OR GROUND Unspecified hole edges acc. to ISO 13715:200-03",
+      "AN ALL BURRS TO BE REMOVED.",
+      "Basic material:",
+      "Plate EN 10029:1991/AC:1991",
+      "Item no. Mass (kg) Certificate Format Status Revised by Created date Created by",
+      "762849 195 EN 10204:2004-3.1 A3 KAJAY 2008-01-13 kebon",
+      "Material / Specification Scale Change no. PDM ver. Reviewed date Reviewed by",
+      "EN 10025:2004 -S 355J2+N + Option 5",
+      "Proj. Item description",
+      "1:10 Table_Version=1 REAR FOUNDATION, TOP PLATE",
+      "Table 01",
+      "Replaces / Copy of Drawing no. Ver. Sheet",
+      "- 762849 7 1of1 CATEGORY t MATERIAL",
+      "WARNING: PROPRIETARY AND CONFIDENTIAL INFORMATION.",
+      "EU (20) EN 10025:2004-S355J2 + N + Option 5 + EN 10164 Z25This document and the Information set forth herein are confidentpiraolp rainedt ary to Vestas Wind Systems A/S. It contains trade secretsi,n daenpde ndent economic value, actual",
+      "or potential, may be derived from the document/Information not being geknneorwanl.l yI n consideration of you receiving this document you agree (I) tthoe kIenefpo rmation secret",
+      "(II) only to use the Information for the purpose specifically agrVeeesdt awsi t(hI II) not to disclose directly or indirectly any part of the Itnof oarnmya ttihoinr d party and",
+      "US/BRAZIL (19) ASTM A572 GR.50+NORMALIZATION+ ASTM A770 ZT (IV) not to make copies or reproductions thereof by whatsoever meuanndse rotra ke any qualitative or quantitative analysis, reverse enginereerpilnigc aotri on.",
+      "VESTAS PROPRIETARY NOTICE: This document contains valuable confidential information of Vestas Wind Systems A/S. It is protected by copyright law as an unpublished work. Vestas reserves all patent, copyright, trade secret, and",
+      "other proprietary rights to it. The information in this document may not be used, reproduced, or disclosed except if and to the extent rights are expressly granted by Vestas in writing and subject to applicable conditions. Vestas",
+      "disclaims all warranties except as expressly granted by written agreement and is not responsible for unauthorized uses, for which it may pursue legal remedies against responsible parties."
+    ]
+  }
+}

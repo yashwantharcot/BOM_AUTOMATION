@@ -1,0 +1,36 @@
+{
+  "table_0": {
+    "filename": "H.pdf",
+    "page": 1,
+    "table_index": 0,
+    "raw_rows": 7,
+    "raw_columns": 6,
+    "key_value_pairs": {},
+    "header_data": {
+      "date": "2008-01-13"
+    },
+    "import_date": "2025-12-04 10:44:33.417000"
+  },
+  "table_1": {
+    "filename": "H.pdf",
+    "page": 1,
+    "table_index": 1,
+    "raw_rows": 3,
+    "raw_columns": 1,
+    "key_value_pairs": {},
+    "header_data": {},
+    "import_date": "2025-12-04 10:44:33.434000"
+  },
+  "table_2": {
+    "filename": "H.pdf",
+    "page": 1,
+    "table_index": 2,
+    "raw_rows": 2,
+    "raw_columns": 1,
+    "key_value_pairs": {},
+    "header_data": {
+      "date": "2008-01-13"
+    },
+    "import_date": "2025-12-04 10:44:33.453000"
+  }
+}

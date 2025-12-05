@@ -1,0 +1,226 @@
+{
+  "file": "H.pdf",
+  "page": 0,
+  "samples": [
+    {
+      "cluster_id": 23,
+      "count": 11,
+      "sample": "outputs/samples/cluster_23_count_11.png",
+      "bbox": [
+        2393,
+        234,
+        2404,
+        270
+      ]
+    },
+    {
+      "cluster_id": 108,
+      "count": 8,
+      "sample": "outputs/samples/cluster_108_count_8.png",
+      "bbox": [
+        4396,
+        803,
+        4468,
+        920
+      ]
+    },
+    {
+      "cluster_id": 44,
+      "count": 6,
+      "sample": "outputs/samples/cluster_44_count_6.png",
+      "bbox": [
+        286,
+        457,
+        406,
+        528
+      ]
+    },
+    {
+      "cluster_id": 208,
+      "count": 6,
+      "sample": "outputs/samples/cluster_208_count_6.png",
+      "bbox": [
+        3668,
+        1940,
+        3689,
+        1976
+      ]
+    },
+    {
+      "cluster_id": 100,
+      "count": 4,
+      "sample": "outputs/samples/cluster_100_count_4.png",
+      "bbox": [
+        297,
+        657,
+        406,
+        728
+      ]
+    },
+    {
+      "cluster_id": 609,
+      "count": 4,
+      "sample": "outputs/samples/cluster_609_count_4.png",
+      "bbox": [
+        4533,
+        2797,
+        4543,
+        2830
+      ]
+    },
+    {
+      "cluster_id": 29,
+      "count": 3,
+      "sample": "outputs/samples/cluster_29_count_3.png",
+      "bbox": [
+        380,
+        334,
+        391,
+        370
+      ]
+    },
+    {
+      "cluster_id": 36,
+      "count": 3,
+      "sample": "outputs/samples/cluster_36_count_3.png",
+      "bbox": [
+        4685,
+        377,
+        4696,
+        414
+      ]
+    },
+    {
+      "cluster_id": 41,
+      "count": 3,
+      "sample": "outputs/samples/cluster_41_count_3.png",
+      "bbox": [
+        4250,
+        386,
+        4261,
+        422
+      ]
+    },
+    {
+      "cluster_id": 60,
+      "count": 3,
+      "sample": "outputs/samples/cluster_60_count_3.png",
+      "bbox": [
+        880,
+        534,
+        896,
+        561
+      ]
+    },
+    {
+      "cluster_id": 71,
+      "count": 3,
+      "sample": "outputs/samples/cluster_71_count_3.png",
+      "bbox": [
+        3640,
+        566,
+        3656,
+        602
+      ]
+    },
+    {
+      "cluster_id": 139,
+      "count": 3,
+      "sample": "outputs/samples/cluster_139_count_3.png",
+      "bbox": [
+        861,
+        1419,
+        933,
+        1526
+      ]
+    },
+    {
+      "cluster_id": 145,
+      "count": 3,
+      "sample": "outputs/samples/cluster_145_count_3.png",
+      "bbox": [
+        962,
+        1447,
+        998,
+        1458
+      ]
+    },
+    {
+      "cluster_id": 231,
+      "count": 3,
+      "sample": "outputs/samples/cluster_231_count_3.png",
+      "bbox": [
+        2911,
+        2031,
+        2928,
+        2061
+      ]
+    },
+    {
+      "cluster_id": 280,
+      "count": 3,
+      "sample": "outputs/samples/cluster_280_count_3.png",
+      "bbox": [
+        3012,
+        2087,
+        3025,
+        2109
+      ]
+    },
+    {
+      "cluster_id": 292,
+      "count": 3,
+      "sample": "outputs/samples/cluster_292_count_3.png",
+      "bbox": [
+        3637,
+        2087,
+        3651,
+        2109
+      ]
+    },
+    {
+      "cluster_id": 307,
+      "count": 3,
+      "sample": "outputs/samples/cluster_307_count_3.png",
+      "bbox": [
+        4144,
+        2126,
+        4159,
+        2156
+      ]
+    },
+    {
+      "cluster_id": 463,
+      "count": 3,
+      "sample": "outputs/samples/cluster_463_count_3.png",
+      "bbox": [
+        755,
+        2471,
+        768,
+        2501
+      ]
+    },
+    {
+      "cluster_id": 582,
+      "count": 3,
+      "sample": "outputs/samples/cluster_582_count_3.png",
+      "bbox": [
+        2977,
+        2797,
+        2988,
+        2831
+      ]
+    },
+    {
+      "cluster_id": 787,
+      "count": 3,
+      "sample": "outputs/samples/cluster_787_count_3.png",
+      "bbox": [
+        2818,
+        3277,
+        2827,
+        3296
+      ]
+    }
+  ]
+}
